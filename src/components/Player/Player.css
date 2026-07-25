@@ -1,6 +1,8 @@
 #player {
   position: absolute; z-index: 200; cursor: grab; touch-action: none;
-  transition: left 0.05s linear, top 0.05s linear;
+  will-change: left, top;
+  padding: 20px;
+  margin: -20px 0 0 -20px;
 }
 #player:active { cursor: grabbing; }
 #player.walking .chibi-legs { animation: walkLegs 0.34s ease-in-out infinite alternate; }

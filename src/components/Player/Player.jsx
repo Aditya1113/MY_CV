@@ -1,10 +1,10 @@
 import { useGame } from '../../context/GameContext';
-import { PATH_POINTS } from '../../data/pathData';
+import { posAtProgress } from '../../hooks/usePlayerDrag';
 import './Player.css';
 
 export default function Player({ onMouseDown, onTouchStart }) {
   const { playerPathIndex, isDragging } = useGame();
-  const pt = PATH_POINTS[playerPathIndex];
+  const pt = posAtProgress(playerPathIndex);
 
   return (
     <div
