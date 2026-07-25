@@ -1,66 +1,80 @@
-/* Trees */
+/* Topiary trees */
 .tree { position: absolute; z-index: 5; pointer-events: none; }
 .tree-crown {
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #6BC66E, #3A8B3E);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%;
+  background: linear-gradient(105deg, #2A6B44 0%, #3E8A57 42%, #153A24 100%);
+  box-shadow: inset -6px -8px 18px rgba(0,0,0,.55), inset 5px 5px 14px rgba(170,255,200,.28), 0 10px 26px rgba(0,0,0,.55);
+  position: relative;
 }
-.tree-trunk-css { background: #6B4226; margin: -2px auto 0; border-radius: 0 0 2px 2px; }
+.tree-crown::after {
+  content: ''; position: absolute; left: 12%; top: 8%; width: 26%; height: 44%;
+  border-radius: 50%;
+  background: linear-gradient(160deg, rgba(190,255,210,.2), transparent);
+}
+.tree-trunk-css {
+  margin: -3px auto 0; border-radius: 3px 3px 6px 6px;
+  background: linear-gradient(100deg, #3A3040, #191320 70%);
+  box-shadow: inset 0 2px 6px rgba(200,169,81,.2), 0 8px 18px rgba(0,0,0,.6);
+}
 
-/* Ponds */
+/* Mirror pools */
 .pond {
   position: absolute; z-index: 2;
-  background: radial-gradient(ellipse, #87CEEB, #5BA8E0);
+  background: radial-gradient(ellipse at 40% 35%, rgba(226,0,122,.34), rgba(30,22,44,.9) 62%);
   border-radius: 50%;
-  box-shadow: 0 2px 12px rgba(91,168,224,0.3), inset 0 -3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 0 1px rgba(200,169,81,.35), 0 0 40px rgba(226,0,122,.22);
 }
 .pond::after {
-  content: ''; position: absolute; top: 20%; left: 25%;
-  width: 30%; height: 15%; background: rgba(255,255,255,0.35); border-radius: 50%;
+  content: ''; position: absolute; inset: 14% 22%; border-radius: 50%;
+  background: linear-gradient(120deg, rgba(255,255,255,.24), transparent 60%);
+  animation: shimmer 6s ease-in-out infinite;
 }
+@keyframes shimmer { 0%, 100% { opacity: .35; transform: translateX(-6%); } 50% { opacity: .8; transform: translateX(6%); } }
 
-/* Flowers */
+/* Flowers/details */
 .fl { position: absolute; border-radius: 50%; z-index: 3; pointer-events: none; }
 
-/* Ferris Wheel */
+/* Carousel (replaces ferris wheel) */
 .ferris-wheel { position: absolute; z-index: 6; pointer-events: none; }
 .fw-ring {
-  width: 80px; height: 80px; border: 3px solid var(--gold); border-radius: 50%;
-  position: relative; animation: fwSpin 20s linear infinite;
+  width: 96px; height: 96px; border: 1px solid rgba(200,169,81,.55);
+  border-radius: 50%; position: relative;
+  animation: fwSpin 26s linear infinite;
+  box-shadow: 0 0 26px rgba(200,169,81,.2), inset 0 0 26px rgba(200,169,81,.12);
 }
 @keyframes fwSpin { to { transform: rotate(360deg); } }
 .fw-spoke {
-  position: absolute; width: 2px; height: 40px;
-  background: var(--gold); top: 0; left: 50%; transform-origin: bottom center;
+  position: absolute; width: 1px; height: 48px;
+  background: linear-gradient(180deg, rgba(200,169,81,.7), transparent);
+  top: 0; left: 50%; transform-origin: bottom center;
 }
 .fw-spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
 .fw-spoke:nth-child(2) { transform: translateX(-50%) rotate(60deg); }
 .fw-spoke:nth-child(3) { transform: translateX(-50%) rotate(120deg); }
 .fw-cab {
-  width: 12px; height: 12px; background: var(--pink);
-  border: 2px solid white; border-radius: 3px 3px 6px 6px; position: absolute;
-}
-.fw-cab:nth-of-type(4) { top: -7px; left: 34px; }
-.fw-cab:nth-of-type(5) { top: 34px; right: -7px; }
-.fw-cab:nth-of-type(6) { bottom: -7px; left: 34px; }
-.fw-cab:nth-of-type(7) { top: 34px; left: -7px; }
-.fw-pole { width: 3px; height: 40px; background: #888; margin: -1px auto 0; }
-.fw-foot { width: 30px; height: 4px; background: #666; border-radius: 2px; margin: 0 auto; }
-
-/* Balloons */
-.balloons {
-  position: absolute; z-index: 7; pointer-events: none;
-  animation: bFloat 4s ease-in-out infinite;
-}
-@keyframes bFloat {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-8px) rotate(2deg); }
-}
-.balloon {
+  width: 9px; height: 9px; border-radius: 2px;
+  background: linear-gradient(135deg, #FF5CA8, #E2007A);
+  box-shadow: 0 0 10px rgba(226,0,122,.8);
   position: absolute;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
-.balloon::after {
-  content: ''; position: absolute; bottom: -10px; left: 50%;
-  width: 1px; height: 10px; background: #999;
+.fw-cab:nth-of-type(4) { top: -5px; left: 44px; }
+.fw-cab:nth-of-type(5) { top: 44px; right: -5px; }
+.fw-cab:nth-of-type(6) { bottom: -5px; left: 44px; }
+.fw-cab:nth-of-type(7) { top: 44px; left: -5px; }
+.fw-pole {
+  width: 2px; height: 56px; margin: -2px auto 0;
+  background: linear-gradient(180deg, #A5842F, rgba(110,85,24,.2));
 }
+.fw-foot {
+  width: 44px; height: 3px; margin: 0 auto; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #A5842F, transparent);
+}
+
+/* Floating orbs (replaces balloons) */
+.balloons { position: absolute; z-index: 7; pointer-events: none; animation: bFloat 7s ease-in-out infinite; }
+@keyframes bFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+.balloon {
+  position: absolute; border-radius: 50%;
+  box-shadow: inset -3px -4px 8px rgba(0,0,0,.4), inset 3px 3px 8px rgba(255,255,255,.35);
+}
+.balloon::after { display: none; }

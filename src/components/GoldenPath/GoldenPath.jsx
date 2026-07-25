@@ -13,11 +13,6 @@ const PATH_D = [
   'C 1520,640 1560,700 1630,810',// 8→9 (continues down)
 ].join(' ');
 
-const DOTS = [
-  [200, 790], [400, 670], [620, 520], [860, 430],
-  [1120, 350], [1310, 220], [1380, 380], [1480, 580], [1630, 810],
-];
-
 export default function GoldenPath() {
   return (
     <svg
@@ -27,30 +22,58 @@ export default function GoldenPath() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style={{ stopColor: '#C8A951' }} />
-          <stop offset="100%" style={{ stopColor: '#E84393' }} />
+        <linearGradient id="gRunway" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="#6E5518" />
+          <stop offset="45%" stopColor="#C8A951" />
+          <stop offset="75%" stopColor="#F3E4B8" />
+          <stop offset="100%" stopColor="#E2007A" />
         </linearGradient>
+        <filter id="fGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="14" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
+      {/* Ground shadow */}
       <path
         d={PATH_D}
         fill="none"
-        stroke="url(#pg)"
-        strokeWidth="28"
+        stroke="rgba(0,0,0,.55)"
+        strokeWidth="40"
         strokeLinecap="round"
-        opacity="0.45"
+        filter="url(#fGlow)"
+        opacity=".7"
       />
+      {/* Runway body */}
       <path
         d={PATH_D}
         fill="none"
-        stroke="rgba(255,255,255,0.25)"
-        strokeWidth="14"
+        stroke="url(#gRunway)"
+        strokeWidth="32"
         strokeLinecap="round"
-        strokeDasharray="6 14"
+        opacity=".58"
       />
-      {DOTS.map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="5" fill="rgba(255,255,255,0.4)" />
-      ))}
+      {/* Inner light line */}
+      <path
+        d={PATH_D}
+        fill="none"
+        stroke="url(#gRunway)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        filter="url(#fGlow)"
+      />
+      {/* Travelling dashes */}
+      <path
+        className="runway-flow"
+        d={PATH_D}
+        fill="none"
+        stroke="rgba(247,244,239,.5)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeDasharray="26 34"
+      />
     </svg>
   );
 }

@@ -51,6 +51,11 @@ export default function GameWorld() {
 
   return (
     <div id="game-world" ref={worldRef}>
+      {/* Atmospheric light beams */}
+      <div className="beam b1" />
+      <div className="beam b2" />
+      <div className="beam b3" />
+
       <GoldenPath />
       <PathStops />
       <Ponds />
@@ -68,6 +73,10 @@ export default function GameWorld() {
       ))}
 
       <Player onMouseDown={onStart} onTouchStart={onStart} />
+
+      {/* Atmospheric overlays */}
+      <div className="grain" />
+      <div className="vignette" />
     </div>
   );
 }

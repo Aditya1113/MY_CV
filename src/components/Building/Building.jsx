@@ -131,7 +131,14 @@ export default function Building({ config, isNear }) {
     <div
       className={`building ${isNear ? 'near-glow' : ''}`}
       id={`bldg-${config.id}`}
-      style={config.style}
+      style={{
+        ...config.style,
+        ...(config.tones ? {
+          '--tone-lt': config.tones[0],
+          '--tone': config.tones[1],
+          '--tone-dk': config.tones[2],
+        } : {}),
+      }}
       onClick={() => setActiveModal(config.id)}
     >
       <span className="level-badge" style={config.badgeStyle}>

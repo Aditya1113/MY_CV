@@ -1,48 +1,68 @@
 .hud-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 500;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 16px 22px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  background: linear-gradient(180deg, rgba(8,7,10,.9) 0%, rgba(8,7,10,.4) 60%, transparent 100%);
   pointer-events: none;
 }
 .hud-top > * { pointer-events: auto; }
-.hud-brand { font-weight: 800; font-size: 1rem; color: var(--gold); letter-spacing: 3px; }
-.hud-brand small { font-weight: 400; font-size: 0.6rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; display: block; }
-.hud-player { display: flex; align-items: center; gap: 12px; }
-.hud-avatar {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--pink));
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.65rem; color: white; border: 2px solid rgba(255,255,255,0.3);
+.hud-brand {
+  font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1.06rem;
+  letter-spacing: .3em; display: block;
+  background: linear-gradient(100deg, #6E5518 0%, #C8A951 22%, #F3E4B8 46%, #C8A951 70%, #6E5518 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: sheen 7s linear infinite;
 }
-.hud-name { font-weight: 600; font-size: 0.78rem; color: white; text-align: right; }
-.hud-xp-row { display: flex; align-items: center; gap: 8px; }
-.hud-xp-bar { width: 110px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
-.hud-xp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.8s; }
-.hud-xp-text { font-family: 'Fredoka', sans-serif; font-size: 0.6rem; color: var(--gold); white-space: nowrap; }
+@keyframes sheen { to { background-position: 220% 0; } }
+.hud-brand small {
+  display: block; margin-top: 7px;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: .76rem;
+  letter-spacing: .08em; color: rgba(247,244,239,.62);
+  -webkit-text-fill-color: rgba(247,244,239,.62);
+  background: none;
+}
+.hud-player { display: flex; align-items: center; gap: 14px; }
+.hud-avatar {
+  width: 42px; height: 42px; flex: 0 0 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Jost', sans-serif; font-size: .66rem; letter-spacing: .06em; color: #08070A;
+  background: linear-gradient(135deg, #F3E4B8, #A5842F 60%, #6E5518);
+  box-shadow: 0 0 0 1px rgba(243,228,184,.5), 0 6px 20px rgba(0,0,0,.6);
+}
+.hud-name {
+  font-family: 'Jost', sans-serif; font-size: .74rem; letter-spacing: .2em;
+  text-transform: uppercase; color: #F7F4EF; text-align: right;
+}
+.hud-xp-row { display: flex; align-items: center; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+.hud-xp-bar { width: 132px; height: 2px; background: rgba(247,244,239,.14); position: relative; overflow: hidden; }
+.hud-xp-fill {
+  position: absolute; inset: 0 auto 0 0; width: 0%; height: 100%;
+  background: linear-gradient(90deg, #6E5518, #F3E4B8, #E2007A);
+  transition: width .9s cubic-bezier(.22,1,.36,1);
+}
+.hud-xp-text { font-family: 'Jost', sans-serif; font-size: .6rem; letter-spacing: .14em; color: #C8A951; white-space: nowrap; }
 
 .how-to-play-btn {
   position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 600;
-  background: rgba(26,26,26,0.88); color: white;
-  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.75rem;
-  padding: 7px 18px; border-radius: 8px; border: none; cursor: pointer;
-  display: flex; align-items: center; gap: 8px; backdrop-filter: blur(8px);
+  background: rgba(16,14,20,.72); backdrop-filter: blur(12px);
+  color: rgba(247,244,239,.62); border: 1px solid rgba(200,169,81,.22);
+  font-family: 'Jost', sans-serif; font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: 9px 15px; border-radius: 2px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 9px;
+  transition: color .3s, border-color .3s;
 }
-.how-to-play-btn:hover { background: rgba(26,26,26,0.95); }
+.how-to-play-btn:hover { color: #F3E4B8; border-color: rgba(243,228,184,.5); }
 .info-icon {
-  width: 18px; height: 18px; border-radius: 50%; border: 2px solid white;
-  display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700;
+  width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(200,169,81,.22);
+  display: flex; align-items: center; justify-content: center; font-size: 0.6rem;
 }
 
 .bottom-hint {
   position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 500;
-  background: rgba(26,26,26,0.75); color: rgba(255,255,255,0.7);
-  font-family: 'Fredoka', sans-serif; font-size: 0.65rem;
-  padding: 6px 18px; border-radius: 16px; pointer-events: none; letter-spacing: 0.5px;
+  background: rgba(16,14,20,.72); backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,169,81,.22); border-radius: 2px;
+  color: rgba(247,244,239,.34);
+  font-family: 'Jost', sans-serif; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  padding: 8px 14px; pointer-events: none;
 }

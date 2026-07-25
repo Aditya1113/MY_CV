@@ -1,65 +1,87 @@
 #player {
-  position: absolute;
-  z-index: 200;
-  cursor: grab;
-  touch-action: none;
+  position: absolute; z-index: 200; cursor: grab; touch-action: none;
   transition: left 0.05s linear, top 0.05s linear;
 }
 #player:active { cursor: grabbing; }
-#player.walking .chibi-legs { animation: walkLegs 0.25s ease-in-out infinite alternate; }
-@keyframes walkLegs { 0% { transform: skewX(-5deg); } 100% { transform: skewX(5deg); } }
-#player.walking .chibi-body { animation: walkBob 0.25s ease-in-out infinite alternate; }
-@keyframes walkBob { to { transform: translateY(-2px); } }
+#player.walking .chibi-legs { animation: walkLegs 0.34s ease-in-out infinite alternate; }
+@keyframes walkLegs { 0% { transform: skewX(-8deg); } 100% { transform: skewX(8deg); } }
+#player.walking .chibi-body { animation: walkBob 0.34s ease-in-out infinite alternate; }
+@keyframes walkBob { to { transform: translateY(-3px); } }
 
 .chibi { position: relative; width: 55px; }
+.chibi::before {
+  content: ''; position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%);
+  width: 110px; height: 110px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(243,228,184,.3), transparent 64%);
+  animation: pulseGlow 3.4s ease-in-out infinite;
+}
+@keyframes pulseGlow { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+
 .chibi-head {
-  width: 40px; height: 40px; background: #FFD5B4; border-radius: 50%;
-  margin: 0 auto; position: relative; z-index: 2; border: 2px solid #E8B88A;
+  width: 48px; height: 48px; margin: 0 auto; position: relative; z-index: 2;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFE0C4, #E8B78C 62%, #C08F63 100%);
+  box-shadow: inset -4px -4px 8px rgba(0,0,0,.22);
 }
 .chibi-hair {
-  position: absolute; top: -5px; left: -3px; right: -3px;
-  height: 26px; background: #4A3728; border-radius: 20px 20px 0 0; z-index: 3;
+  position: absolute; top: -6px; left: -4px; right: -4px;
+  height: 27px; z-index: 3; border-radius: 22px 22px 4px 4px;
+  background: linear-gradient(120deg, #5A3A22 0%, #2E1B0F 60%);
+  box-shadow: inset 3px 3px 6px rgba(255,220,180,.18);
 }
 .chibi-hair::after {
-  content: ''; position: absolute; bottom: -7px; left: -1px; right: -1px;
-  height: 12px; background: #4A3728; border-radius: 0 0 7px 7px;
+  content: ''; position: absolute; bottom: -16px; left: -2px; right: -2px; height: 22px;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(120deg, #4A2F1B, #241407);
 }
 .chibi-eyes {
-  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 7px; z-index: 4;
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 9px; z-index: 6;
 }
-.chibi-eye { width: 5px; height: 7px; background: #2d2d2d; border-radius: 50%; }
+.chibi-eye {
+  width: 5px; height: 7px; border-radius: 50%;
+  background: #1B1116; box-shadow: 0 0 0 1px rgba(0,0,0,.2);
+  animation: blink 6s infinite;
+}
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
 .chibi-blush {
-  position: absolute; top: 22px; width: 7px; height: 4px;
-  background: rgba(255, 150, 150, 0.4); border-radius: 50%; z-index: 4;
+  position: absolute; top: 25px; width: 8px; height: 4px;
+  background: rgba(226,0,122,.4); border-radius: 50%; filter: blur(1px); z-index: 6;
 }
 .chibi-blush.l { left: 3px; }
 .chibi-blush.r { right: 3px; }
 .chibi-mouth {
   position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
-  width: 5px; height: 3px; background: #E07070; border-radius: 0 0 3px 3px; z-index: 4;
+  width: 7px; height: 4px; border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #C4185C, #E2007A); z-index: 6;
 }
 .chibi-body {
-  width: 28px; height: 20px; margin: -3px auto 0;
-  background: var(--gold); border-radius: 5px 5px 3px 3px;
+  width: 34px; height: 26px; margin: -4px auto 0;
+  background: linear-gradient(150deg, #F3E4B8 0%, #C8A951 48%, #6E5518 100%);
+  border-radius: 7px 7px 4px 4px;
   position: relative; z-index: 1;
+  box-shadow: inset -3px -3px 6px rgba(0,0,0,.3), 0 4px 10px rgba(0,0,0,.45);
 }
 .chibi-body::before {
-  content: 'L'; position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
-  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 0.5rem; color: white;
+  content: 'L'; position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .52rem; color: #08070A;
 }
 .chibi-legs {
-  display: flex; justify-content: center; gap: 3px;
+  display: flex; justify-content: center; gap: 4px;
   margin-top: -1px; position: relative; z-index: 1;
 }
-.chibi-leg { width: 9px; height: 10px; background: #2d2d2d; border-radius: 0 0 3px 3px; }
+.chibi-leg {
+  width: 9px; height: 12px; border-radius: 0 0 4px 4px;
+  background: linear-gradient(180deg, #2A2230, #100D14);
+}
 .chibi-shadow {
-  width: 36px; height: 7px; background: rgba(0, 0, 0, 0.1);
-  border-radius: 50%; margin: 2px auto 0;
+  width: 40px; height: 8px; margin: 3px auto 0; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%);
 }
 .player-nametag {
-  text-align: center; font-family: 'Fredoka', sans-serif;
-  font-size: 0.55rem; font-weight: 600;
-  color: white; background: rgba(26, 26, 26, 0.75);
-  padding: 2px 8px; border-radius: 8px; margin-top: 3px; white-space: nowrap;
+  margin-top: 8px; text-align: center; white-space: nowrap;
+  font-family: 'Jost', sans-serif; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: #F3E4B8;
+  background: rgba(16,14,20,.72); backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,169,81,.22); border-radius: 2px; padding: 3px 10px;
 }

@@ -1,22 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Jost:wght@300;400;500;600&display=swap');
 
 :root {
+  --noir: #08070A;
+  --noir-2: #100E14;
+  --noir-3: #1A171F;
+  --plum: #241A2B;
+  --gold-1: #F3E4B8;
   --gold: #C8A951;
-  --pink: #E84393;
-  --black: #1a1a1a;
+  --gold-2: #A5842F;
+  --gold-3: #6E5518;
+  --rose: #E2007A;
+  --rose-lt: #FF5CA8;
+  --pearl: #F7F4EF;
+  --ash: rgba(247,244,239,.62);
+  --ash-dim: rgba(247,244,239,.34);
+  --hairline: rgba(200,169,81,.22);
+  --pink: #E2007A;
+  --black: #08070A;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Montserrat', system-ui, sans-serif;
+  --util: 'Jost', system-ui, sans-serif;
+  --glass: rgba(16,14,20,.72);
+  --glass-hi: rgba(255,255,255,.05);
+  --ease: cubic-bezier(.22,1,.36,1);
+  --spring: cubic-bezier(.34,1.46,.64,1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--sans);
+  background: var(--noir);
+  color: var(--pearl);
   overflow: hidden;
   height: 100vh;
   width: 100vw;
   user-select: none;
-  background: #4A9B4E;
+  -webkit-font-smoothing: antialiased;
 }
+:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 3px; }
+
+.gold-text {
+  background: linear-gradient(100deg, var(--gold-3) 0%, var(--gold) 22%, var(--gold-1) 46%, var(--gold) 70%, var(--gold-3) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: sheen 7s linear infinite;
+}
+@keyframes sheen { to { background-position: 220% 0; } }
