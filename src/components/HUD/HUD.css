@@ -1,0 +1,48 @@
+.hud-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+}
+.hud-top > * { pointer-events: auto; }
+.hud-brand { font-weight: 800; font-size: 1rem; color: var(--gold); letter-spacing: 3px; }
+.hud-brand small { font-weight: 400; font-size: 0.6rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; display: block; }
+.hud-player { display: flex; align-items: center; gap: 12px; }
+.hud-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--pink));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.65rem; color: white; border: 2px solid rgba(255,255,255,0.3);
+}
+.hud-name { font-weight: 600; font-size: 0.78rem; color: white; text-align: right; }
+.hud-xp-row { display: flex; align-items: center; gap: 8px; }
+.hud-xp-bar { width: 110px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+.hud-xp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.8s; }
+.hud-xp-text { font-family: 'Fredoka', sans-serif; font-size: 0.6rem; color: var(--gold); white-space: nowrap; }
+
+.how-to-play-btn {
+  position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 600;
+  background: rgba(26,26,26,0.88); color: white;
+  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.75rem;
+  padding: 7px 18px; border-radius: 8px; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; backdrop-filter: blur(8px);
+}
+.how-to-play-btn:hover { background: rgba(26,26,26,0.95); }
+.info-icon {
+  width: 18px; height: 18px; border-radius: 50%; border: 2px solid white;
+  display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700;
+}
+
+.bottom-hint {
+  position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 500;
+  background: rgba(26,26,26,0.75); color: rgba(255,255,255,0.7);
+  font-family: 'Fredoka', sans-serif; font-size: 0.65rem;
+  padding: 6px 18px; border-radius: 16px; pointer-events: none; letter-spacing: 0.5px;
+}

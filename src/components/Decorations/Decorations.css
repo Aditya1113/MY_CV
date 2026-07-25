@@ -1,0 +1,66 @@
+/* Trees */
+.tree { position: absolute; z-index: 5; pointer-events: none; }
+.tree-crown {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6BC66E, #3A8B3E);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.1);
+}
+.tree-trunk-css { background: #6B4226; margin: -2px auto 0; border-radius: 0 0 2px 2px; }
+
+/* Ponds */
+.pond {
+  position: absolute; z-index: 2;
+  background: radial-gradient(ellipse, #87CEEB, #5BA8E0);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(91,168,224,0.3), inset 0 -3px 8px rgba(0,0,0,0.1);
+}
+.pond::after {
+  content: ''; position: absolute; top: 20%; left: 25%;
+  width: 30%; height: 15%; background: rgba(255,255,255,0.35); border-radius: 50%;
+}
+
+/* Flowers */
+.fl { position: absolute; border-radius: 50%; z-index: 3; pointer-events: none; }
+
+/* Ferris Wheel */
+.ferris-wheel { position: absolute; z-index: 6; pointer-events: none; }
+.fw-ring {
+  width: 80px; height: 80px; border: 3px solid var(--gold); border-radius: 50%;
+  position: relative; animation: fwSpin 20s linear infinite;
+}
+@keyframes fwSpin { to { transform: rotate(360deg); } }
+.fw-spoke {
+  position: absolute; width: 2px; height: 40px;
+  background: var(--gold); top: 0; left: 50%; transform-origin: bottom center;
+}
+.fw-spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.fw-spoke:nth-child(2) { transform: translateX(-50%) rotate(60deg); }
+.fw-spoke:nth-child(3) { transform: translateX(-50%) rotate(120deg); }
+.fw-cab {
+  width: 12px; height: 12px; background: var(--pink);
+  border: 2px solid white; border-radius: 3px 3px 6px 6px; position: absolute;
+}
+.fw-cab:nth-of-type(4) { top: -7px; left: 34px; }
+.fw-cab:nth-of-type(5) { top: 34px; right: -7px; }
+.fw-cab:nth-of-type(6) { bottom: -7px; left: 34px; }
+.fw-cab:nth-of-type(7) { top: 34px; left: -7px; }
+.fw-pole { width: 3px; height: 40px; background: #888; margin: -1px auto 0; }
+.fw-foot { width: 30px; height: 4px; background: #666; border-radius: 2px; margin: 0 auto; }
+
+/* Balloons */
+.balloons {
+  position: absolute; z-index: 7; pointer-events: none;
+  animation: bFloat 4s ease-in-out infinite;
+}
+@keyframes bFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.balloon {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+.balloon::after {
+  content: ''; position: absolute; bottom: -10px; left: 50%;
+  width: 1px; height: 10px; background: #999;
+}

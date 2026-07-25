@@ -1,0 +1,51 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s, visibility 1s;
+}
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.load-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+.load-sub {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  color: rgba(200, 169, 81, 0.5);
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+}
+.load-bar-wrap {
+  width: 280px;
+  height: 6px;
+  background: rgba(200, 169, 81, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.load-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--pink));
+  border-radius: 3px;
+  transition: width 0.4s;
+}
+.load-msg {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(200, 169, 81, 0.4);
+  letter-spacing: 2px;
+}

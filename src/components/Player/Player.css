@@ -1,0 +1,65 @@
+#player {
+  position: absolute;
+  z-index: 200;
+  cursor: grab;
+  touch-action: none;
+  transition: left 0.05s linear, top 0.05s linear;
+}
+#player:active { cursor: grabbing; }
+#player.walking .chibi-legs { animation: walkLegs 0.25s ease-in-out infinite alternate; }
+@keyframes walkLegs { 0% { transform: skewX(-5deg); } 100% { transform: skewX(5deg); } }
+#player.walking .chibi-body { animation: walkBob 0.25s ease-in-out infinite alternate; }
+@keyframes walkBob { to { transform: translateY(-2px); } }
+
+.chibi { position: relative; width: 55px; }
+.chibi-head {
+  width: 40px; height: 40px; background: #FFD5B4; border-radius: 50%;
+  margin: 0 auto; position: relative; z-index: 2; border: 2px solid #E8B88A;
+}
+.chibi-hair {
+  position: absolute; top: -5px; left: -3px; right: -3px;
+  height: 26px; background: #4A3728; border-radius: 20px 20px 0 0; z-index: 3;
+}
+.chibi-hair::after {
+  content: ''; position: absolute; bottom: -7px; left: -1px; right: -1px;
+  height: 12px; background: #4A3728; border-radius: 0 0 7px 7px;
+}
+.chibi-eyes {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 7px; z-index: 4;
+}
+.chibi-eye { width: 5px; height: 7px; background: #2d2d2d; border-radius: 50%; }
+.chibi-blush {
+  position: absolute; top: 22px; width: 7px; height: 4px;
+  background: rgba(255, 150, 150, 0.4); border-radius: 50%; z-index: 4;
+}
+.chibi-blush.l { left: 3px; }
+.chibi-blush.r { right: 3px; }
+.chibi-mouth {
+  position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 3px; background: #E07070; border-radius: 0 0 3px 3px; z-index: 4;
+}
+.chibi-body {
+  width: 28px; height: 20px; margin: -3px auto 0;
+  background: var(--gold); border-radius: 5px 5px 3px 3px;
+  position: relative; z-index: 1;
+}
+.chibi-body::before {
+  content: 'L'; position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 0.5rem; color: white;
+}
+.chibi-legs {
+  display: flex; justify-content: center; gap: 3px;
+  margin-top: -1px; position: relative; z-index: 1;
+}
+.chibi-leg { width: 9px; height: 10px; background: #2d2d2d; border-radius: 0 0 3px 3px; }
+.chibi-shadow {
+  width: 36px; height: 7px; background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%; margin: 2px auto 0;
+}
+.player-nametag {
+  text-align: center; font-family: 'Fredoka', sans-serif;
+  font-size: 0.55rem; font-weight: 600;
+  color: white; background: rgba(26, 26, 26, 0.75);
+  padding: 2px 8px; border-radius: 8px; margin-top: 3px; white-space: nowrap;
+}

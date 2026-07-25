@@ -1,0 +1,16 @@
+.path-stop {
+  position: absolute;
+  z-index: 8;
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(200, 169, 81, 0.6);
+  transform: translate(-50%, -50%);
+}
+.path-stop.visited {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(200, 169, 81, 0.5);
+}

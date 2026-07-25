@@ -1,0 +1,31 @@
+.help-modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+  z-index: 5000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all 0.3s; backdrop-filter: blur(6px);
+}
+.help-modal.active { opacity: 1; visibility: visible; }
+.help-card {
+  background: white; border-radius: 18px; max-width: 420px; width: 90%; padding: 28px;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.25);
+  transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.help-modal.active .help-card { transform: scale(1); }
+.help-title {
+  font-weight: 700; font-size: 1.1rem; color: var(--black);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.help-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid #f0f0f0;
+}
+.help-item:last-child { border-bottom: none; }
+.help-icon { font-size: 1.1rem; flex-shrink: 0; }
+.help-text { font-size: 0.82rem; color: #555; line-height: 1.45; }
+.help-text strong { color: var(--black); }
+.help-close-btn {
+  width: 100%; margin-top: 18px; padding: 11px;
+  background: var(--gold); color: white;
+  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem;
+  border: none; border-radius: 10px; cursor: pointer;
+}
+.help-close-btn:hover { background: #b89940; }
