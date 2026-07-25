@@ -34,6 +34,11 @@ export default function HUD() {
         <span className="info-icon">!</span> How to Play
       </button>
 
+      <div className="beauty-quote">
+        <div className="beauty-quote-heading">What does beauty mean to me?</div>
+        <p>While it is often said that beauty lies in the eyes of the beholder, I believe beauty is about making the beholder believe in you. It is the confidence you radiate, the effortless way you carry your style, and how you choose to express yourself through hair and makeup. True beauty is entirely universal: transcending color, size, nationality, and cultural boundaries. A girl from the slums possesses the same inherent beauty as one living in a skyscraper, just as a devoted mother holds the same grace as a woman working relentlessly for her livelihood.</p>
+      </div>
+
       <div className="bottom-hint">
         Drag Swarnima along the golden path &bull; Drop her on buildings to explore
       </div>
