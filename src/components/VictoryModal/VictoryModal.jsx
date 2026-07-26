@@ -41,7 +41,7 @@ export default function VictoryModal() {
         </div>
 
         <p className="victory-message">
-          You've explored every milestone of Swarnima's journey &mdash; from a perfect 10/10 scholar
+          You've explored every milestone of Swarnima's journey; from a perfect 10/10 scholar
           to a Tech-Product leader. But this is just the beginning. There's so much more to come...
         </p>
 

@@ -1,5 +1,14 @@
+import { useEffect, useRef } from 'react';                 // CHANGED: added
 import { useGame } from '../../context/GameContext';
+import { playUnlock } from '../../sfx/sfx';              // CHANGED: added
 import './Building.css';
+
+// CHANGED: true = chime every time she walks back into range.
+//          false = each building celebrates only its first unlock.
+const REPLAY_ON_EVERY_APPROACH = false;
+
+// CHANGED: module-level, so it survives a Building unmount/remount.
+const alreadyChimed = new Set();
 
 function SchoolBuilding({ config }) {
   const w = config.width || 80;
@@ -126,6 +135,23 @@ const BUILDING_RENDERERS = {
 export default function Building({ config, isNear }) {
   const { setActiveModal } = useGame();
   const Renderer = BUILDING_RENDERERS[config.type];
+
+  // CHANGED: seeded with the mount value so buildings that are already in range
+  // on page load stay quiet instead of all chiming at once.
+  const wasNear = useRef(isNear);
+
+  // CHANGED: fire the fanfare on the false -> true edge only, not on every
+  // render while she happens to be standing nearby.
+  useEffect(() => {
+    const justArrived = isNear && !wasNear.current;
+    wasNear.current = isNear;
+
+    if (!justArrived) return;
+    if (!REPLAY_ON_EVERY_APPROACH && alreadyChimed.has(config.id)) return;
+
+    alreadyChimed.add(config.id);
+    playUnlock();
+  }, [isNear, config.id]);
 
   return (
     <div

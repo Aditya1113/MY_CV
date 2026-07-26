@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import buildingData from '../../data/buildingData';
 import { BUILDING_STOPS } from '../../data/pathData';
+import { playModalOpen, playModalClose } from '../../sfx/sfx';   // CHANGED: added
 import './Modal.css';
 
 function ModalContent({ data }) {
@@ -82,8 +83,16 @@ export default function Modal() {
   const { activeModal, closeModal, visitBuilding, showToast, setPlayerPathIndex } = useGame();
   const data = activeModal ? buildingData[activeModal] : null;
 
+  // CHANGED: one place that plays the close sound, then closes.
+  const handleClose = () => {
+    playModalClose();
+    closeModal();
+  };
+
   useEffect(() => {
     if (!activeModal || !data) return;
+
+    playModalOpen();   // CHANGED: added
 
     // Snap player to building
     const stopIdx = BUILDING_STOPS[activeModal];
@@ -97,14 +106,15 @@ export default function Modal() {
   }, [activeModal]);
 
   const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) closeModal();
+    if (e.target === e.currentTarget) handleClose();   // CHANGED: was closeModal()
   };
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+    if (!activeModal) return;   // CHANGED: don't listen (or chime) while closed
+    const onKey = (e) => { if (e.key === 'Escape') handleClose(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [closeModal]);
+  }, [activeModal, closeModal]);   // CHANGED: added activeModal
 
   if (!data) return null;
 
@@ -166,7 +176,7 @@ export default function Modal() {
             <div className="modal-title">{data.title}</div>
             <div className="modal-subtitle">{data.subtitle}</div>
           </div>
-          <button className="modal-close" onClick={() => closeModal()}>
+          <button className="modal-close" onClick={handleClose}>
             &times;
           </button>
         </div>

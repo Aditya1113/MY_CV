@@ -228,8 +228,8 @@
 
 .victory-tagline {
   font-family: var(--display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 0.75rem;
-  color: rgba(200,169,81,.44);
+  font-size: 30px ;
+  color: rgba(225, 245, 46, 0.44);
   letter-spacing: 3px;
   font-style: italic;
 }
