@@ -213,8 +213,10 @@ const buildingData = {
         { icon: '\u{1F3A8}', name: 'Mandala Crafting', desc: 'Geometric art, symmetry & detail', stat: '+15 FOCUS & PRECISION' },
         { icon: '\u{1F363}', name: 'Culinary Alchemy', desc: '5+ international cuisines', stat: '+15 ADAPTABILITY & CREATIVITY' },
         { icon: '\u270D\uFE0F', name: 'Poetic Versatility', desc: '4+ years poetry writing', stat: '+10 STORYTELLING' },
-      ]},
-   10: {
+      ],
+    },
+  },
+  10: {
     title: 'Strengths & Weaknesses (WIP) Bands',
     subtitle: 'Core Competencies & Growth Areas',
     icon: '\u{2696}\uFE0F', // Balance scale
@@ -256,9 +258,8 @@ const buildingData = {
           desc: 'Statistics-bred over-analysis; correcting by trusting qualitative inputs & time-boxing', 
           stat: '\u{21BB} CALIBRATING DECISION SPEED' 
         }
-      ]
-    }
-  }
+      ],
+    },
   },
 };
 
