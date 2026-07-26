@@ -41,7 +41,7 @@ export default function HUD() {
 
       <div className="favourite-quote">
         <div className="beauty-quote-heading">Which is my favourite Loreal product?</div>
-        <p>I absolutely love the L'Oréal Absolut Repair shampoo and hair mask; they have completely transformed my routine into a luxurious, at-home spa experience. The rich formulas deeply nourish my hair, leaving it feeling incredibly soft and revived after every wash. When paired with their fantastic conditioner, the entire range works together beautifully to deliver that perfect, salon-fresh finish right from my own shower.</p>
+        <p>I absolutely love the L'Oréal Absolut Repair shampoo and hair mask; they have completely transformed my routine into a luxurious, at-home spa experience. The rich formulas deeply nourish my hair, feels incredibly soft after every wash. The entire range works together beautifully.</p>
       </div>
 
       <div className="bottom-hint">
