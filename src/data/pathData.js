@@ -49,12 +49,17 @@ export const PATH_POINTS = [
   { x: 82, y: 70 },
   { x: 83.5, y: 73 },
   { x: 85, y: 76 },    // stop 9 (bldg 9)
-  { x: 86.5, y: 72.5 },
-  { x: 88, y: 69 },
-  { x: 89.5, y: 65.5 },
-  { x: 91, y: 62 },
-  { x: 92, y: 58.5 },
-  { x: 87, y: 87 },    // stop 10 (bldg 10)
+
+  // CHANGED: 49–53 used to climb back UP to (92, 58.5) before index 54
+  // teleported down to (87, 87). The trail detoured away from building 10
+  // and snapped back, so Swarnima could never walk into stop 54.
+  // These now descend smoothly from building 9 to building 10.
+  { x: 85.4, y: 78.5 },
+  { x: 85.9, y: 81 },
+  { x: 86.3, y: 83 },
+  { x: 86.6, y: 85 },
+  { x: 86.8, y: 86.5 },
+  { x: 87, y: 88 },    // stop 10 (bldg 10)
 ];
 
 // Which path index corresponds to each building

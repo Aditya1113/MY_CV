@@ -1,0 +1,280 @@
+/* ============================================================
+   mobile.css — responsive + touch behaviour
+   Import LAST in main.jsx so these rules win on equal specificity.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. VIEWPORT & TOUCH HARDENING  (applies at every size)
+   ------------------------------------------------------------ */
+
+/* 100vh on mobile includes the URL bar, so the bottom of the map gets
+   cut off and shifts as the bar hides. dvh measures the real area. */
+@supports (height: 100dvh) {
+  html, body { height: 100dvh; }
+  body #game-world { height: 100dvh; }
+}
+
+html, body {
+  /* Kills pull-to-refresh and rubber-band scroll, which otherwise fire
+     during a drag and yank the whole page around. */
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;  /* no grey flash on tap */
+  -webkit-text-size-adjust: 100%;            /* iOS won't inflate text in landscape */
+  touch-action: none;
+}
+
+/* The world must claim all gestures — otherwise the browser interprets a
+   drag as a scroll and the swipe-to-walk handler never sees the move. */
+body #game-world {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ------------------------------------------------------------
+   2. COMPOSABLE TRANSFORMS
+   Building.css hardcodes transform on :hover and .near-glow, so a plain
+   `transform: scale()` in a media query would be overwritten by them.
+   Routing everything through a variable lets scale and lift coexist.
+   ------------------------------------------------------------ */
+.building {
+  --b-scale: 1;
+  transform: scale(var(--b-scale));
+  transform-origin: 50% 100%;   /* grow from the ground, stay on the path */
+}
+.building:hover {
+  transform: translateY(-12px) scale(calc(var(--b-scale) * 1.06));
+}
+.building.near-glow {
+  transform: translateY(-12px) scale(calc(var(--b-scale) * 1.08));
+}
+
+/* Same idea for the player. Note: Player.css has no `.flip` rule at all,
+   so isFlipped currently does nothing — this wires it up. */
+#player .chibi {
+  transform: scaleX(var(--p-flip, 1)) scale(var(--p-scale, 1));
+  transform-origin: 50% 100%;
+}
+#player.flip { --p-flip: -1; }
+
+/* ------------------------------------------------------------
+   3. TOUCH DEVICES — no hover
+   On a touchscreen :hover sticks after a tap, leaving buildings
+   permanently lifted and glowing. Neutralise it.
+   ------------------------------------------------------------ */
+@media (hover: none), (pointer: coarse) {
+  .building:hover {
+    transform: scale(var(--b-scale));
+    filter: drop-shadow(3px 6px 16px rgba(0, 0, 0, .5));
+    z-index: 10;
+  }
+  .building:hover .building-label { opacity: 0; }
+  .building.near-glow:hover {
+    transform: translateY(-12px) scale(calc(var(--b-scale) * 1.08));
+    z-index: 100;
+  }
+  .building.near-glow:hover .building-label { opacity: 1; }
+
+  .how-to-play-btn:hover { color: rgba(247, 244, 239, .62); border-color: rgba(200, 169, 81, .22); }
+  .modal-close:hover { border-color: rgba(200, 169, 81, .22); color: rgba(247, 244, 239, .62); }
+
+  /* Comfortable tap targets — 30px is well under the 44px guideline. */
+  .modal-close { width: 44px; height: 44px; font-size: 1.15rem; }
+  .help-close-btn { padding: 16px; }
+  .how-to-play-btn { padding: 12px 16px; }
+}
+
+/* ------------------------------------------------------------
+   4. TABLETS / SMALL LAPTOPS  (≤ 1024px)
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .building { --b-scale: .78; }
+  #player { --p-scale: .88; }
+
+  .building-label { font-size: .56rem; letter-spacing: .14em; padding: 4px 9px; }
+  .hud-brand { font-size: .92rem; letter-spacing: .22em; }
+  .hud-xp-bar { width: 108px; }
+  .beauty-quote p, .favourite-quote p { font-size: .84rem; }
+}
+
+/* ------------------------------------------------------------
+   5. PHONES  (≤ 768px) — the main pass
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  /* --- Map scale ---
+     Buildings sit at fixed percentages that must stay aligned with the
+     SVG path and PATH_POINTS, so NEVER reposition them here — only scale.
+     Moving them would desync them from their path stops. */
+  .building { --b-scale: .58; }
+  #player { --p-scale: .74; padding: 16px; }
+
+  /* Labels: long ones like "Masters in Computer Science" overflow a
+     390px screen, and #game-world clips the overflow. Let them wrap. */
+  .building-label {
+    top: -34px;
+    max-width: 40vw;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    font-size: .52rem;
+    letter-spacing: .1em;
+    padding: 4px 8px;
+  }
+  /* Right-edge buildings would have their centred label pushed off-screen. */
+  #bldg-7 .building-label,
+  #bldg-8 .building-label,
+  #bldg-9 .building-label,
+  #bldg-10 .building-label { left: auto; right: 0; transform: none; }
+  /* And the left-edge one. */
+  #bldg-1 .building-label { left: 0; right: auto; transform: none; }
+
+  .level-badge { min-width: 24px; height: 24px; font-size: .52rem; top: -12px; right: -12px; }
+  .xp-badge { font-size: .48rem; padding: 2px 7px; top: -12px; left: -14px; }
+
+  /* --- HUD --- */
+  .hud-top { padding: 10px 12px; gap: 8px; }
+  .hud-brand { font-size: .78rem; letter-spacing: .16em; }
+  .hud-brand small { font-size: .62rem; margin-top: 4px; }
+  .hud-player { gap: 9px; }
+  .hud-avatar { width: 32px; height: 32px; flex: 0 0 32px; font-size: .54rem; }
+  .hud-name { font-size: .58rem; letter-spacing: .12em; }
+  .hud-xp-row { gap: 7px; margin-top: 5px; }
+  .hud-xp-bar { width: 74px; }
+  .hud-xp-text { font-size: .52rem; letter-spacing: .08em; }
+
+  /* Was top:10px/left:50% — that lands between the brand and the player
+     and overlaps both. Bottom-left is empty on a phone. */
+  .how-to-play-btn {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
+    transform: none;
+    font-size: .56rem;
+    letter-spacing: .12em;
+    padding: 10px 13px;
+  }
+
+  /* These overlay the play area and are unreadable at this width —
+     .favourite-quote's left:5%/right:60% leaves a ~35vw sliver.
+     Delete these three lines if you'd rather keep them visible. */
+  .beauty-quote,
+  .favourite-quote,
+  .bottom-hint { display: none; }
+
+  /* --- Toast --- */
+  .toast {
+    top: auto;
+    bottom: 70px;
+    right: 12px;
+    left: 12px;
+    padding: 11px 14px;
+  }
+  .toast-icon { font-size: 1.05rem; }
+
+  /* --- Modal --- */
+  .modal-overlay { padding: 10px; align-items: flex-end; }
+  .modal {
+    width: 100%;
+    max-height: 88dvh;
+    border-radius: 2px;
+    -webkit-overflow-scrolling: touch;
+    /* The modal scrolls; the map behind it must not. */
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+  .modal-header { padding: 18px 18px 14px; gap: 11px; }
+  .modal-icon { width: 40px; height: 40px; flex: 0 0 40px; font-size: 1.1rem; }
+  .modal-title { font-size: 1.08rem; padding-right: 40px; }
+  .modal-subtitle { font-size: .6rem; }
+  .modal-close { top: 14px; right: 12px; }
+  .modal-body { padding: 16px 18px 24px; }
+
+  /* Long values were squashing against the label in a flex row. */
+  .modal-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 9px 0;
+    font-size: .78rem;
+  }
+  .modal-stat-value { text-align: left; }
+  .modal-stat-label { white-space: normal; }
+  .modal-section-title { font-size: .55rem; letter-spacing: .18em; margin: 16px 0 8px; }
+  .modal-ach-text { font-size: .78rem; }
+  .skill-tag { font-size: .55rem; padding: 4px 9px; }
+
+  /* --- Help modal: now 5 items, tall enough to overflow a short phone --- */
+  .help-card {
+    width: 94%;
+    padding: 22px 18px 18px;
+    max-height: 86dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+  .help-title { font-size: 1.25rem; }
+  .help-item { padding: 10px 0; gap: 10px; }
+  .help-text { font-size: .76rem; line-height: 1.55; }
+  .help-close-btn { margin-top: 18px; font-size: .6rem; letter-spacing: .18em; }
+
+  /* --- Victory modal --- */
+  .victory-card { width: 94%; padding: 24px 18px; max-height: 86dvh; overflow-y: auto; }
+  .victory-card .victory-emoji { font-size: 2.4rem; }
+}
+
+/* ------------------------------------------------------------
+   6. SMALL PHONES  (≤ 480px)
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  .building { --b-scale: .48; }
+  #player { --p-scale: .64; padding: 14px; }
+
+  .building-label { font-size: .46rem; max-width: 34vw; top: -28px; }
+  .level-badge { min-width: 20px; height: 20px; font-size: .46rem; }
+  .xp-badge { display: none; }   /* two badges won't fit beside a 48%-scale building */
+
+  .hud-brand { font-size: .68rem; letter-spacing: .1em; }
+  .hud-brand small { display: none; }
+  .hud-avatar { width: 28px; height: 28px; flex: 0 0 28px; }
+  .hud-xp-bar { width: 58px; }
+
+  .modal-title { font-size: .98rem; }
+  .help-title { font-size: 1.1rem; }
+}
+
+/* ------------------------------------------------------------
+   7. PHONE LANDSCAPE — very little vertical room
+   ------------------------------------------------------------ */
+@media (max-height: 480px) and (orientation: landscape) {
+  .building { --b-scale: .5; }
+  #player { --p-scale: .62; }
+
+  .hud-top { padding: 6px 12px; }
+  .hud-brand small { display: none; }
+  .beauty-quote, .favourite-quote, .bottom-hint { display: none; }
+
+  .modal-overlay { padding: 6px; align-items: center; }
+  .modal { max-height: 94dvh; }
+  .modal-header { padding: 12px 16px 10px; }
+  .modal-body { padding: 12px 16px 18px; }
+
+  .help-card { max-height: 94dvh; padding: 16px 18px; }
+  .help-item { padding: 7px 0; }
+}
+
+/* ------------------------------------------------------------
+   8. REDUCED MOTION
+   The beams, sheen, pulsing windows and blinking eyes all loop forever.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .beam { display: none; }
+}
