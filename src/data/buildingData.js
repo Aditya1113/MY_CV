@@ -2,6 +2,32 @@ import mdiGroup from '../assets/images/mdi-group.jpg';
 import mdiBuilding from '../assets/images/mdi-building.jpg';
 import mdiCampus from '../assets/images/mdi-campus.jpg';
 import mdiILove from '../assets/images/mdi-ilove.jpg';
+import interest8 from '../assets/images/interest8.jpeg';
+import interest2 from '../assets/images/trek-2.jpeg';
+import interest6 from '../assets/images/trekking-2.jpeg';
+import interest7 from '../assets/images/trekking-3.jpeg';
+import interest3 from '../assets/images/bsc-1.jpeg';
+import interest4 from '../assets/images/nepal.mp4';
+import interest5 from '../assets/images/gandola.mp4';
+import waffle from '../assets/images/waffle.jpeg';
+import biryani from '../assets/images/biryani.jpeg';
+import mandala from '../assets/images/mandala.jpeg';
+import photo1 from '../assets/images/photo1.jpeg';
+import scrap1 from '../assets/images/scrap-1.mp4';
+import travelling3 from '../assets/images/travelling-3.mp4';
+import mca from '../assets/images/mca.jpeg';
+import photo2 from '../assets/images/photo2.jpeg';
+import diwalidecor from '../assets/images/diwalidecor.jpeg';
+import sunrise from '../assets/images/sunrise.jpeg';
+import flower from '../assets/images/flower.jpeg';
+import food from '../assets/images/food.jpeg';
+import travel6 from '../assets/images/travel-6.jpeg';
+import color from '../assets/images/colors.jpeg';
+import travel8 from '../assets/images/travel8.jpeg';
+import office1 from '../assets/images/office-1.jpeg';
+import office2 from '../assets/images/office-2.jpeg';
+import botany from '../assets/images/botany.jpeg';
+
 
 const buildingData = {
   1: {
@@ -10,6 +36,7 @@ const buildingData = {
     icon: '\u{1F3EB}',
     iconBg: '#00B894',
     xp: 1000,
+      photos: [photo1, sunrise],
     content: {
       xpBarWidth: '100%',
       stats: [
@@ -26,6 +53,7 @@ const buildingData = {
     icon: '\u{1F4DA}',
     iconBg: '#0984E3',
     xp: 1500,
+        photos: [interest3, botany],
     content: {
       xpBarWidth: '91%',
       stats: [
@@ -38,11 +66,12 @@ const buildingData = {
     },
   },
   3: {
-    title: 'LEVEL 3: Data Analyst',
+    title: 'LEVEL 3: Playing with Data',
     subtitle: 'BSc. Honours Statistics - DU (2020)',
     icon: '\u{1F4CA}',
     iconBg: '#6C3BAA',
     xp: 2500,
+    photos: [interest7, interest2, interest8, interest6],
     content: {
       xpBarWidth: '81.3%',
       stats: [
@@ -51,15 +80,16 @@ const buildingData = {
         { label: 'XP Gained', value: '+2,500 Points', color: '#C8A951' },
         { label: 'Cumulative', value: '5,000 Points' },
       ],
-      skills: ['Statistics', 'Data Analysis', 'Mathematics'],
+      skills: ['Statistics', 'Data Analysis', 'Mathematics','Trekking'],
     },
   },
   4: {
-    title: 'LEVEL 4: Master Architect',
+    title: 'LEVEL 4: Masters in Computer Science',
     subtitle: 'MCA - ABES Engineering College (2022)',
     icon: '\u{1F4BB}',
     iconBg: '#E17055',
     xp: 3500,
+        photos: [mca, photo2],
     content: {
       xpBarWidth: '89.5%',
       stats: [
@@ -72,7 +102,7 @@ const buildingData = {
     },
   },
   5: {
-    title: 'LEVEL 5: Product & Strategy Elite',
+    title: 'LEVEL 5: Management Elite',
     subtitle: "PGDM '26 - MDI Gurgaon",
     icon: '\u{1F3C6}',
     iconBg: '#D63031',
@@ -86,15 +116,16 @@ const buildingData = {
         { label: 'XP Gained', value: '+4,000 Points', color: '#C8A951' },
         { label: 'Status', value: '\u23F3 IN PROGRESS', color: '#D63031' },
       ],
-      skills: ['Product Strategy', 'CIRCLES', 'RICE', 'Kano', 'North Star Metrics'],
+      skills: ['Product Strategy', 'MicroEconomics', 'Financial Accounting', 'Marketing Planning'],
     },
   },
   6: {
-    title: 'Work Experience Power-Up',
+    title: 'Software Developer Power-Up',
     subtitle: 'Magic Software Pvt. Ltd. | 27 Months',
     icon: '\u26A1',
     iconBg: '#6C3BAA',
     xp: 3500,
+        photos: [office1,office2],
     content: {
       xpBarWidth: '100%',
       stats: [
@@ -113,45 +144,50 @@ const buildingData = {
       ],
     },
   },
-  7: {
+7: {
     title: 'Leadership Power-Ups',
     subtitle: 'Positions of Responsibility',
-    icon: '\u{1F451}',
+    icon: '👑',
     iconBg: '#E84393',
     xp: 2700,
+    videos:[interest4, interest5],
+    
     content: {
       xpBarWidth: '100%',
       sections: [
         {
-          heading: '\u{1F4B0} Treasurer, Photography Club',
+          heading: '💰 Treasurer, Photography Club',
           xpLabel: '+1,200 XP',
           items: [
-            { icon: '\u{1F4F7}', text: 'Led 17-member team, 25+ workshops, \u20B913,000 sponsorships (+32.5%)' },
+            { icon: '📷', text: 'Led 17-member team, 25+ workshops, ₹13,000 sponsorships (+32.5%)' },
           ],
         },
         {
-          heading: '\u{1F4DC} Editor, Newspaper',
+          heading: '📜 Editor, Newspaper',
           xpLabel: '+900 XP',
           items: [
-            { icon: '\u270D\uFE0F', text: 'Engaged 1,000+ readers through editorial content' },
+            { icon: '✍️', text: 'Engaged 1,000+ readers through editorial content' },
           ],
         },
         {
-          heading: '\u{1F30E} Expedition Coordinator',
+          heading: '🌎 Expedition Coordinator',
           xpLabel: '+600 XP',
           items: [
-            { icon: '\u{1F30E}', text: 'Led 14-member team, 4+ expeditions' },
+            { icon: '🌎', text: 'Led 14-member team, 4+ expeditions' },
           ],
         },
       ],
     },
   },
+  // ... (levels 8 and 9 remain the same)
   8: {
     title: 'Achievement & Skill Badges',
     subtitle: 'Certifications & Awards',
     icon: '\u{1F3C5}',
     iconBg: '#C8A951',
     xp: 2000,
+        photos: [travel6, travel8,],
+
     content: {
       xpBarWidth: '100%',
       achievements: [
@@ -169,14 +205,60 @@ const buildingData = {
     icon: '\u{1F3A8}',
     iconBg: '#00B894',
     xp: 800,
+        photos: [mandala, biryani, waffle, food],
+
     content: {
       xpBarWidth: '100%',
       traits: [
         { icon: '\u{1F3A8}', name: 'Mandala Crafting', desc: 'Geometric art, symmetry & detail', stat: '+15 FOCUS & PRECISION' },
         { icon: '\u{1F363}', name: 'Culinary Alchemy', desc: '5+ international cuisines', stat: '+15 ADAPTABILITY & CREATIVITY' },
         { icon: '\u270D\uFE0F', name: 'Poetic Versatility', desc: '4+ years poetry writing', stat: '+10 STORYTELLING' },
-      ],
-    },
+      ]},
+   10: {
+    title: 'Strengths & Weaknesses (WIP) Bands',
+    subtitle: 'Core Competencies & Growth Areas',
+    icon: '\u{2696}\uFE0F', // Balance scale
+    iconBg: '#6C5CE7', // Distinctive purple background
+    xp: 500,
+    photos:[flower, color],
+    content: {
+      xpBarWidth: '100%',
+      traits: [
+        // Strengths
+        { 
+          icon: '\u{1F9E9}', // Puzzle piece
+          name: 'Problem-Solving', 
+          desc: 'Built internal "hotspot" feature from scratch; shipped on schedule', 
+          stat: '+20 INNOVATION & EXECUTION' 
+        },
+        { 
+          icon: '\u{1F3AF}', // Bullseye
+          name: 'Attention to Detail', 
+          desc: 'Pixel-perfect UIs from complex wireframes; disciplined testing', 
+          stat: '-30% BUG RATE' 
+        },
+        { 
+          icon: '\u{1F3C6}', // Trophy
+          name: 'Diligence', 
+          desc: 'Field switch to MCA yielding a Top-5 rank ("How you do anything is how you do everything")', 
+          stat: '+25 GRIT & WORK ETHIC' 
+        },
+        // Weaknesses (Work in Progress)
+        { 
+          icon: '\u{1F9D8}', // Person meditating 
+          name: 'Pressure Management (WIP)', 
+          desc: 'Tendency to overthink setbacks; correcting via mindfulness and reframing', 
+          stat: '\u{21BB} UPGRADING RESILIENCE' 
+        },
+        { 
+          icon: '\u{23F1}\uFE0F', // Stopwatch
+          name: 'Analysis Paralysis (WIP)', 
+          desc: 'Statistics-bred over-analysis; correcting by trusting qualitative inputs & time-boxing', 
+          stat: '\u{21BB} CALIBRATING DECISION SPEED' 
+        }
+      ]
+    }
+  }
   },
 };
 

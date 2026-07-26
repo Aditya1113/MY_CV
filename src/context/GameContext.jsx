@@ -20,7 +20,7 @@ export function GameProvider({ children }) {
     const updated = new Set(visitedBuildings).add(id);
     setVisitedBuildings(updated);
     setTotalXP(prev => prev + xp);
-    if (updated.size === 9) {
+    if (updated.size === 10) {
       allCompletedRef.current = true;
     }
     return true;

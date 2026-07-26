@@ -100,8 +100,8 @@
 /* Animated circular photos */
 .modal-photo {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #C8A951;

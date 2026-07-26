@@ -11,6 +11,7 @@ const PATH_D = [
   'C 1350,240 1360,300 1380,380',// 6→7 (curves down)
   'C 1400,440 1430,500 1480,580',// 7→8 (continues down)
   'C 1520,640 1560,700 1630,810',// 8→9 (continues down)
+  'C 1645,850 1655,900 1670,940',
 ].join(' ');
 
 export default function GoldenPath() {

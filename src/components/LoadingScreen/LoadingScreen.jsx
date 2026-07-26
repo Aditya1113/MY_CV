@@ -29,7 +29,7 @@ export default function LoadingScreen() {
         }
         return next;
       });
-    }, 300);
+    }, 400);
     return () => clearInterval(interval);
   }, [setIsLoading, setShowHelp]);
 

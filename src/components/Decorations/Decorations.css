@@ -43,24 +43,35 @@
   box-shadow: 0 0 26px rgba(200,169,81,.2), inset 0 0 26px rgba(200,169,81,.12);
 }
 @keyframes fwSpin { to { transform: rotate(360deg); } }
+
+/* SPOKES */
 .fw-spoke {
   position: absolute; width: 1px; height: 48px;
   background: linear-gradient(180deg, rgba(200,169,81,.7), transparent);
   top: 0; left: 50%; transform-origin: bottom center;
 }
+/* We need 6 rules now to cover all 360 degrees */
 .fw-spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
 .fw-spoke:nth-child(2) { transform: translateX(-50%) rotate(60deg); }
 .fw-spoke:nth-child(3) { transform: translateX(-50%) rotate(120deg); }
+.fw-spoke:nth-child(4) { transform: translateX(-50%) rotate(180deg); }
+.fw-spoke:nth-child(5) { transform: translateX(-50%) rotate(240deg); }
+.fw-spoke:nth-child(6) { transform: translateX(-50%) rotate(300deg); }
+
+/* CABS */
 .fw-cab {
   width: 9px; height: 9px; border-radius: 2px;
   background: linear-gradient(135deg, #FF5CA8, #E2007A);
   box-shadow: 0 0 10px rgba(226,0,122,.8);
   position: absolute;
 }
-.fw-cab:nth-of-type(4) { top: -5px; left: 44px; }
-.fw-cab:nth-of-type(5) { top: 44px; right: -5px; }
-.fw-cab:nth-of-type(6) { bottom: -5px; left: 44px; }
-.fw-cab:nth-of-type(7) { top: 44px; left: -5px; }
+/* Because there are now 6 spokes before them, the cabs are children 7 through 10 */
+.fw-cab:nth-child(7) { top: -5px; left: 44px; }
+.fw-cab:nth-child(8) { top: 44px; right: -5px; }
+.fw-cab:nth-child(9) { bottom: -5px; left: 44px; }
+.fw-cab:nth-child(10) { top: 44px; left: -5px; }
+
+/* BASE */
 .fw-pole {
   width: 2px; height: 56px; margin: -2px auto 0;
   background: linear-gradient(180deg, #A5842F, rgba(110,85,24,.2));

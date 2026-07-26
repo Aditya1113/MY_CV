@@ -33,7 +33,7 @@ const buildingConfig = [
   {
     id: 3,
     style: { left: '28%', top: '40%' },
-    label: 'Data Analyst',
+    label: 'Playing with Data',
     badgeText: 'L3',
     badgeStyle: {},
     xpText: '+2,500',
@@ -48,7 +48,7 @@ const buildingConfig = [
   {
     id: 4,
     style: { left: '42%', top: '30%' },
-    label: 'Master Architect',
+    label: 'Masters in Computer Science',
     badgeText: 'L4',
     badgeStyle: {},
     xpText: '+3,500',
@@ -63,7 +63,7 @@ const buildingConfig = [
   {
     id: 5,
     style: { left: '56%', top: '20%' },
-    label: 'Product & Strategy Elite',
+    label: 'Management Elite',
     badgeText: 'L5',
     badgeStyle: {},
     xpText: '+4,000',
@@ -78,7 +78,7 @@ const buildingConfig = [
   {
     id: 6,
     style: { left: '66%', top: '16%' },
-    label: 'Work Experience Lab',
+    label: 'Software Developer Power-Up',
     badgeText: '\u26A1',
     badgeStyle: {},
     xpText: '+3,500',
@@ -118,6 +118,18 @@ const buildingConfig = [
     scale: 0.85,
     tones: ['#3A8F7A', '#1F5A4C', '#0D2B24'],
   },
+  {
+    id: 10,
+    style: { left: '87%', top: '88%' }, // Adjusted to continue the path after id 9
+    label: 'Strengths & Weakness(WIP)', // Shortened for the building tag
+    badgeText: '\u{2696}\uFE0F', // Balance scale icon matching your data
+    badgeStyle: {},
+    xpText: '+500',
+    type: 'cottage', // You can change this if you have other 3D types like 'tower' or 'modern'
+    roofColor: '#6C5CE7', // The purple iconBg used in the data object
+    scale: 0.9,
+    tones: ['#7f71c5', '#6C5CE7', '#341F97'], // Purple 3D shading tones (light, base, dark)
+  }
 ];
 
 export default buildingConfig;

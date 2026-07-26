@@ -3,9 +3,9 @@ import { useGame } from '../../context/GameContext';
 import './HelpModal.css';
 
 const HELP_ITEMS = [
-  { icon: '\u{1F6B6}', title: 'Drag Swarnima', desc: 'along the golden path. She can only move on the path!' },
+  { icon: '\u{1F6B6}', title: 'Drag Swarnima', desc: 'along the golden path. She can only move on the path! Scroll downward for forward movement' },
   { icon: '\u{1F3E2}', title: 'Drop on a building', desc: 'to unlock it and view achievements, stats, and XP.' },
-  { icon: '\u{1F4C8}', title: 'Collect XP', desc: 'by visiting all 9 buildings to reach 21,500 XP Legendary status!' },
+  { icon: '\u{1F4C8}', title: 'Collect XP', desc: 'by visiting all 10 buildings to reach 22,000 XP Legendary status!' },
   { icon: '\u{1F31F}', title: 'Follow the path', desc: 'from Level 1 (bottom-left) to discover Swarnima\'s full journey!' },
 ];
 

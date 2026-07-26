@@ -22,7 +22,7 @@ export default function HUD() {
                 <div className="hud-xp-fill" style={{ width: `${pct}%` }} />
               </div>
               <div className="hud-xp-text">
-                {totalXP.toLocaleString()} / 21,500 XP
+                {totalXP.toLocaleString()} / 22,000 XP
               </div>
             </div>
           </div>
@@ -37,6 +37,11 @@ export default function HUD() {
       <div className="beauty-quote">
         <div className="beauty-quote-heading">What does beauty mean to me?</div>
         <p>While it is often said that beauty lies in the eyes of the beholder, I believe beauty is about making the beholder believe in you. It is the confidence you radiate, the effortless way you carry your style, and how you choose to express yourself through hair and makeup. True beauty is entirely universal: transcending color, size, nationality, and cultural boundaries. A girl from the slums possesses the same inherent beauty as one living in a skyscraper, just as a devoted mother holds the same grace as a woman working relentlessly for her livelihood.</p>
+      </div>
+
+      <div className="favourite-quote">
+        <div className="beauty-quote-heading">Which is my favourite Loreal product?</div>
+        <p>I absolutely love the L'Oréal Absolut Repair shampoo and hair mask; they have completely transformed my routine into a luxurious, at-home spa experience. The rich formulas deeply nourish my hair, leaving it feeling incredibly soft and revived after every wash. When paired with their fantastic conditioner, the entire range works together beautifully to deliver that perfect, salon-fresh finish right from my own shower.</p>
       </div>
 
       <div className="bottom-hint">

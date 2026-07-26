@@ -112,10 +112,49 @@ export default function Modal() {
     <div className={`modal-overlay ${activeModal ? 'active' : ''}`} onClick={handleOverlayClick}>
       {data.photos && (
         <>
-          <img className="modal-photo modal-photo-tl" src={data.photos[0]} alt="" />
-          <img className="modal-photo modal-photo-bl" src={data.photos[1]} alt="" />
-          <img className="modal-photo modal-photo-tr" src={data.photos[2]} alt="" />
-          <img className="modal-photo modal-photo-br" src={data.photos[3]} alt="" />
+          {data.photos.map((photo, index) => {
+            // This preserves your exact placement order: TL, BL, TR, BR
+            const positions = [
+              'modal-photo-tl', 
+              'modal-photo-tr', 
+              'modal-photo-bl',
+              'modal-photo-br',
+            ];
+
+            return (
+              <img 
+                key={index}
+                className={`modal-photo ${positions[index]}`} 
+                src={photo} 
+                alt="" 
+              />
+            );
+          })}
+        </>
+      )}
+{data.videos && (
+        <>
+          {data.videos.map((vid, index) => {
+            // Assign a different corner to each video based on its index
+            const positionClasses = [
+              'modal-photo-tl', // 1st video goes Top Left
+              'modal-photo-tr', // 2nd video goes Top Right
+              'modal-photo-bl', // 3rd video goes Bottom Left
+              'modal-photo-br'  // 4th video goes Bottom Right
+            ];
+            
+            return (
+              <video 
+                key={index} 
+                className={`modal-photo ${positionClasses[index]}`}
+                src={vid} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+              />
+            );
+          })}
         </>
       )}
       <div className="modal">
