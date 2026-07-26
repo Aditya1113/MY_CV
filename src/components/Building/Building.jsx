@@ -139,7 +139,7 @@ export default function Building({ config, isNear }) {
           '--tone-dk': config.tones[2],
         } : {}),
       }}
-      onClick={() => isNear && setActiveModal(config.id)}
+      onClick={() => setActiveModal(config.id)}
     >
       <span className="level-badge" style={config.badgeStyle}>
         {config.badgeText}
